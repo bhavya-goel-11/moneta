@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { Skeleton } from '@/components/ui/skeleton';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { 
@@ -78,7 +78,7 @@ export default function HomePage() {
     { id: 6, merchant: "Zomato", category: "Food", amount: -680, time: "22 Oct", initial: "Z", color: "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400" },
   ];
 
-  const container = {
+  const container: Variants = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
@@ -86,7 +86,7 @@ export default function HomePage() {
     }
   };
 
-  const item = {
+  const item: Variants = {
     hidden: { opacity: 0, y: 15 },
     show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 300, damping: 24 } }
   };
