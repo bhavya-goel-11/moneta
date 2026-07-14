@@ -51,9 +51,6 @@ export default function HomePage() {
       id: 3,
       icon: <Car className="w-5 h-5 text-moneta-clay" />,
       text: "Your car insurance renews in 9 days — we found a better quote, ₹2,100 cheaper.",
-      id: 3,
-      icon: <Car className="w-5 h-5 text-moneta-clay" />,
-      text: "Your car insurance renews in 9 days — we found a better quote, ₹2,100 cheaper.",
       action: "View Quotes"
     }
   ]);
