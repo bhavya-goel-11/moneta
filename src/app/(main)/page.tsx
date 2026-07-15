@@ -268,7 +268,7 @@ export default function HomePage() {
         <motion.div variants={item}>
           <div className="flex justify-between items-end mb-4">
             <h2 className="text-[11px] font-semibold text-moneta-neutral-400 dark:text-moneta-neutral-200 uppercase tracking-wider">Recent transactions</h2>
-            <motion.button whileTap={{ scale: 0.95 }} className="text-[13px] font-medium text-moneta-clay hover:opacity-80 transition-opacity">See all</motion.button>
+            <Link href="/transactions" className="text-[13px] font-medium text-moneta-clay hover:opacity-80 transition-opacity">See all</Link>
           </div>
           
           <div className="bg-card rounded-2xl p-2 shadow-sm border border-border">

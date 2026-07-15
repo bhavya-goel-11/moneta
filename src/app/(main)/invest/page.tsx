@@ -17,7 +17,8 @@ import {
   ChevronLeft,
   Calendar,
   IndianRupee,
-  Activity
+  Activity,
+  RefreshCw
 } from 'lucide-react';
 
 type TabType = 'overview' | 'mf' | 'stocks' | 'gold' | 'epf';
@@ -26,6 +27,18 @@ export default function InvestPage() {
   const [activeTab, setActiveTab] = useState<TabType>('overview');
   const [selectedMf, setSelectedMf] = useState<any | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  
+  const [isFetchingEpf, setIsFetchingEpf] = useState(false);
+  const [epfLastFetched, setEpfLastFetched] = useState('24 Oct, 09:30 AM');
+
+  const handleFetchEpf = () => {
+    setIsFetchingEpf(true);
+    setTimeout(() => {
+      setIsFetchingEpf(false);
+      const now = new Date();
+      setEpfLastFetched(`Today, ${now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`);
+    }, 1500);
+  };
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoading(false), 600);
@@ -284,6 +297,19 @@ export default function InvestPage() {
             <span className="text-moneta-neutral-400 dark:text-moneta-neutral-200">Employer Share</span>
             <span className="font-medium tabular-nums text-foreground">₹65,340</span>
           </div>
+        </div>
+
+        <div className="mt-6 pt-4 border-t border-border flex items-center justify-between">
+          <p className="text-[11px] text-moneta-neutral-400 dark:text-moneta-neutral-200">Last fetched: {epfLastFetched}</p>
+          <motion.button 
+            whileTap={{ scale: 0.95 }}
+            onClick={handleFetchEpf}
+            disabled={isFetchingEpf}
+            className="flex items-center gap-1.5 text-xs font-medium text-moneta-clay hover:opacity-80 transition-opacity disabled:opacity-50"
+          >
+            <RefreshCw className={`w-3.5 h-3.5 ${isFetchingEpf ? 'animate-spin' : ''}`} />
+            {isFetchingEpf ? 'Fetching...' : 'Fetch Latest'}
+          </motion.button>
         </div>
       </div>
     );

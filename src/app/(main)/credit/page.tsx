@@ -8,11 +8,23 @@ import {
   AlertCircle, 
   AlertTriangle,
   ChevronRight,
-  TrendingUp
+  TrendingUp,
+  RefreshCw
 } from 'lucide-react';
 
 export default function CreditScorePage() {
   const [isLoading, setIsLoading] = useState(true);
+  const [isFetchingScore, setIsFetchingScore] = useState(false);
+  const [scoreLastFetched, setScoreLastFetched] = useState('24 Oct, 10:15 AM');
+
+  const handleFetchScore = () => {
+    setIsFetchingScore(true);
+    setTimeout(() => {
+      setIsFetchingScore(false);
+      const now = new Date();
+      setScoreLastFetched(`Today, ${now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`);
+    }, 1500);
+  };
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoading(false), 600);
@@ -75,7 +87,19 @@ export default function CreditScorePage() {
           <div className="bg-moneta-signal-green/10 text-moneta-signal-green px-3 py-1 rounded-full text-sm font-medium">
             Excellent
           </div>
-          <p className="text-xs text-moneta-neutral-400 dark:text-moneta-neutral-200 mt-3">Updated 2 days ago</p>
+          
+          <div className="w-full mt-6 pt-4 border-t border-border flex items-center justify-between">
+            <p className="text-[11px] text-moneta-neutral-400 dark:text-moneta-neutral-200">Last fetched: {scoreLastFetched}</p>
+            <motion.button 
+              whileTap={{ scale: 0.95 }}
+              onClick={handleFetchScore}
+              disabled={isFetchingScore}
+              className="flex items-center gap-1.5 text-xs font-medium text-moneta-clay hover:opacity-80 transition-opacity disabled:opacity-50"
+            >
+              <RefreshCw className={`w-3.5 h-3.5 ${isFetchingScore ? 'animate-spin' : ''}`} />
+              {isFetchingScore ? 'Fetching...' : 'Fetch Latest'}
+            </motion.button>
+          </div>
         </section>
 
         {/* 6-Month Trend */}
