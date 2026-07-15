@@ -169,7 +169,7 @@ export default function CardsPage() {
         </div>
         
         {/* Horizontal Carousel */}
-        <div className="overflow-x-auto pb-4 px-6 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+        <div className="overflow-x-auto pt-2 pb-4 px-6 -mt-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
           <div className="flex gap-4 w-max">
             {myCards.map((card, idx) => (
               <div 
