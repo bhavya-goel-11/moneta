@@ -26,10 +26,10 @@ export default function LinkAccountsPage() {
   };
 
   return (
-    <div className="flex-1 flex flex-col h-full bg-background">
+    <div className="flex-1 flex flex-col h-full bg-background min-h-0">
       <TopBar />
       
-      <div className="flex-1 px-6 py-4 flex flex-col">
+      <div className="flex-1 px-6 py-4 flex flex-col min-h-0">
         <h1 className="text-3xl font-heading mb-3 tracking-tight">Link your accounts</h1>
         <p className="text-muted-foreground mb-8">We found these accounts linked to your mobile number. Select the ones you want to connect.</p>
         
